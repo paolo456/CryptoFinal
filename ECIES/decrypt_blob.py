@@ -1,10 +1,10 @@
-#ch9_decrypt_blob.py
+
 from Crypto.PublicKey import RSA
 from Crypto.Cipher import PKCS1_OAEP
 import base64
 import zlib
 
-#Our Decryption Function
+#Decryption Function
 def decrypt_blob(encrypted_blob, private_key):
 
     #Import the Private Key and use for decryption using PKCS1_OAEP

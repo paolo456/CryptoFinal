@@ -1,10 +1,10 @@
-#ch9_encrypt_blob.py
+
 from Crypto.PublicKey import RSA
 from Crypto.Cipher import PKCS1_OAEP
 import zlib
 import base64
 
-#Our Encryption Function
+#Encryption Function
 def encrypt_blob(blob, public_key):
     #Import the Public Key and use for encryption using PKCS1_OAEP
     rsa_key = RSA.importKey(public_key)

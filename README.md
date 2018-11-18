@@ -27,3 +27,13 @@ python encryptdir.py test
 
 HELP 
 python encryptdir.py --help
+
+
+Libraries used: 
+argparse
+hashlib
+os
+random
+re
+shutil
+subprocess

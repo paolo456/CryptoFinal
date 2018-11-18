@@ -283,20 +283,16 @@ def test():
 
     print('All files matched successfully')
 
-#======================================================
+    
 def _getHashFromFile(file):
     with open(file, 'r') as file:
         return hashlib.sha256(file.read().encode('utf-8')).hexdigest()
 
-
-
-#======================================================
 def getNewFiles():
     for sourcefile in os.listdir(INPUTDIR):
         if not os.path.exists('{0}/{1}'.format(OUTPUTDIR, getEncryptedOutputFileName(sourcefile))):
             yield sourcefile
 
-#======================================================
 def getDecryptingFiles(dir):
     for item in os.listdir(dir):
         mtch = re.match(r'(.*)\.key\.enc$', item)
@@ -307,7 +303,7 @@ def getDecryptingFiles(dir):
             if os.path.exists('{0}/{1}'.format(dir, file)):
                 yield file, file_key, mtch.group(1)
 
-#======================================================
+
 def getOutputFileName(input):
     return '{0}.gz'.format(input)
 
@@ -325,22 +321,5 @@ def removeFile(file):
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#======================================================
 if __name__ == '__main__':
     main()

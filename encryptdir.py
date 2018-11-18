@@ -19,23 +19,21 @@ TMPDIR="./tmp"
 # location of rsa private key file. 
 # Keep this file save! only needed for decryption!
 DEFAULT_KEY_FILE="./mykey.pem"
-# location of rsa public key file.
+
 DEFAULT_PUB_KEY_FILE="./mykey.pem.pub"
 
 # File/key size for symmetric encryption
 AES_KEY_FILE_SIZE=256
-# RSA key size. Only needed for RSA key creation. (encryptdir.py gen-keys)
+
 RSA_KEY_SIZE=4096
 
-# used symmetric cipher routines
-# see https://www.openssl.org/docs/apps/enc.html#supported_ciphers
+
 SYMMETRIC_ENCRYPTION_CASC = [
     'aes-256-cbc',
     'bf',
     'cast5-cbc'
 ]
 
-#======================================================
 def main():
     #encrypt()
     #_generate_priv_pub_key_pair()
@@ -84,7 +82,6 @@ def main():
 
 
 
-#======================================================
 def _generate_test_data(number=5):
 
     if not os.path.exists(INPUTDIR):
@@ -119,7 +116,6 @@ def _generate_priv_pub_key_pair(key_size=RSA_KEY_SIZE, key_file=None, key_pub_fi
         call([ 'openssl', 'rsa', '-in', key_file, '-pubout' ], stdout=stdout)
 
 
-#======================================================
 def prepair(out_dir=OUTPUTDIR):
 
     # cleaning workspace
@@ -136,7 +132,7 @@ def prepair(out_dir=OUTPUTDIR):
         os.makedirs(out_dir)
 
 
-#======================================================
+
 def clean(include_outdir=False):
     if os.path.exists(TMPDIR):
         print("Deleting {0}".format(TMPDIR))
@@ -146,7 +142,6 @@ def clean(include_outdir=False):
         print('Deleting {0}'.format(OUTPUTDIR))
         shutil.rmtree(OUTPUTDIR)
 
-#======================================================
 def encrypt():
     prepair()
     
@@ -156,7 +151,7 @@ def encrypt():
     # clean tmp
     shutil.rmtree(TMPDIR)
 
-#======================================================
+
 def encrypt_file(source):
 
     print('Encrypting file {0}'.format(source))
@@ -196,29 +191,9 @@ def encrypt_file(source):
     # clean tmp
     removeFile(keyfile)
 
-#======================================================
-def decrypt(in_dir, out_dir):
-    if in_dir == None:
-        print('No input folder given.')
-        exit(1)
 
-    if out_dir == None:
-        print('No output folder given')
-        exit(1)
 
-    if not os.path.exists(in_dir):
-        print('Input folder "{0}" does not exists'.format(in_dir))
-        exit(1)
 
-    prepair(out_dir=out_dir)
-
-    for file, file_key, org_name in getDecryptingFiles(in_dir):
-        decrypt_file(file, file_key, org_name, in_dir, out_dir)
-    
-    # clean tmp
-    shutil.rmtree(TMPDIR)
-
-#======================================================
 def decrypt_file(file, file_key, org_name, in_dir, out_dir):
     print('Decrypting {0}'.format(file))
 
@@ -249,7 +224,29 @@ def decrypt_file(file, file_key, org_name, in_dir, out_dir):
     removeFile(tmp_file_key)
     removeFile(sym_inc_file)
     
-#======================================================
+
+def decrypt(in_dir, out_dir):
+    if in_dir == None:
+        print('No input folder given.')
+        exit(1)
+
+    if out_dir == None:
+        print('No output folder given')
+        exit(1)
+
+    if not os.path.exists(in_dir):
+        print('Input folder "{0}" does not exists'.format(in_dir))
+        exit(1)
+
+    prepair(out_dir=out_dir)
+
+    for file, file_key, org_name in getDecryptingFiles(in_dir):
+        decrypt_file(file, file_key, org_name, in_dir, out_dir)
+    
+    # clean tmp
+    shutil.rmtree(TMPDIR)
+    
+
 def test():
     if not os.path.exists(INPUTDIR):
         os.makedirs(INPUTDIR)

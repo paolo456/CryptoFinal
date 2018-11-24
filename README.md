@@ -4,7 +4,7 @@ a python script to encrypt all files, including mpeg files, in a directory with 
 
 Generate a rsa key pair
 
-   ```bash
+   ```
     python encryptdir.py gen-keys
     ```
 

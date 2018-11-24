@@ -62,5 +62,7 @@ Libraries used:
   subprocess
 
 References: 
-  https://www.openssl.org/docs/apps/enc.html#supported_ciphers
-  stackoverflow.com
+    https://www.openssl.org/docs/apps/enc.html#supported_ciphers
+    stackoverflow.com
+    & Fellow Students
+  

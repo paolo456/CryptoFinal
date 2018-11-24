@@ -2,11 +2,12 @@
 
 a python script to encrypt all files, including mpeg files, in a directory with a public rsa key.
 
+## Usage 
+
 Generate a rsa key pair
 
-   ```
-    python encryptdir.py gen-keys
-    ```
+    ```python encryptdir.py gen-keys
+    
 
 Create your input folder if not exists
 

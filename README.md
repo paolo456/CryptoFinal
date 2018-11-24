@@ -6,20 +6,18 @@ a python script to encrypt all files, including mpeg files, in a directory with 
 
 Generate a rsa key pair
 
-    ```python encryptdir.py gen-keys
+    python encryptdir.py gen-keys
     
 
 Create your input folder if not exists
 
-   ```bash
     mkdir input
-    ```
+    
 
 Encrypting
 
-   ```bash
     python encryptdir.py encrypt
-    ```
+   
 
   
 
@@ -42,12 +40,13 @@ After, all files in input will be encrypted into output. After encrypting, the o
 
 Decrypting
 
-  python encryptdir.py decrypt -in ./folder-with-encrypted-files/ -out ./target-folder/
+    python encryptdir.py decrypt -in ./folder-with-encrypted-files/ -out ./target-folder/
 
 You can also test encryption and decryption.
 
 #mkdir input && insert some test files (optional)
-python encryptdir.py test
+        
+    python encryptdir.py test
 
 HELP 
 python encryptdir.py --help
